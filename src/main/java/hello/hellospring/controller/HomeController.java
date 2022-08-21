@@ -18,15 +18,15 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@RequestParam(value = "lang", required = false) String lang, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-        if (Objects.equals(lang, "") ) {
+        if (Objects.equals(lang, "en") ) {
+            Locale locale = new Locale(lang);
+            LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
+            Objects.requireNonNull(localeResolver).setLocale(request, response, locale);
+        } else {
             lang = "ko";
             Locale locale = new Locale(lang);
             LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-            localeResolver.setLocale(request, response, locale);
-        } else {
-            Locale locale = new Locale(lang);
-            LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-            localeResolver.setLocale(request, response, locale);
+            Objects.requireNonNull(localeResolver).setLocale(request, response, locale);
         }
         return "home";
     }
