@@ -1,4 +1,4 @@
-package hello.hellospring;
+package hello.hellospring.configure;
 
 import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.repository.*;
