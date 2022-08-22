@@ -6,13 +6,9 @@ import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -30,10 +26,7 @@ public class MemberController {
     }
 
     @PostMapping("/members/new")
-    public String create(@Valid @ModelAttribute("member") MemberRequestDto form, BindingResult result) {
-        if (result.hasErrors()) {
-            return "members/createMemberForm";
-        }
+    public String create(MemberRequestDto form) {
         Member member = new Member();
         member.setUserId(form.getUserId());
         member.setPassword(form.getPassword());
@@ -49,4 +42,13 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/memberList";
     }
+
+    @GetMapping("/members/login")
+    public String loginForm() { return "members/loginForm"; }
+
+    @PostMapping("/members/login")
+    public String login(MemberRequestDto form) {
+        return null;
+    }
+
 }

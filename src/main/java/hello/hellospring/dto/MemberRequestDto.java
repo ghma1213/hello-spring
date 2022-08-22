@@ -1,7 +1,6 @@
 package hello.hellospring.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -10,18 +9,27 @@ public class MemberRequestDto {
     private String password;
     private String name;
 
-    @NotEmpty
     public String getUserId() {
         return userId;
     }
 
-    @NotEmpty
     public String getPassword() {
         return password;
     }
 
-    @NotEmpty
     public String getName() {
         return name;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
