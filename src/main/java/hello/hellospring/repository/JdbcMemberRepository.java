@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JdbcMemberRepository implements MemberRepository {
+public class JdbcMemberRepository {
 
     private final DataSource dataSource;
 
@@ -17,7 +17,7 @@ public class JdbcMemberRepository implements MemberRepository {
         this.dataSource = dataSource;
     }
 
-    @Override
+//    @Override
     public Member save(Member member) {
         String sql = "insert into member(name) values(?)";
         Connection conn = null;
@@ -43,7 +43,7 @@ public class JdbcMemberRepository implements MemberRepository {
         }
     }
 
-    @Override
+//    @Override
     public Optional<Member> findById(Long id) {
         String sql = "select * from member where id = ?";
 
@@ -70,7 +70,7 @@ public class JdbcMemberRepository implements MemberRepository {
         }
     }
 
-    @Override
+//    @Override
     public Optional<Member> findByName(String name) {
         String sql = "select * from member where name = ?";
         Connection conn = null;
@@ -95,7 +95,7 @@ public class JdbcMemberRepository implements MemberRepository {
         }
     }
 
-    @Override
+//    @Override
     public List<Member> findAll() {
         String sql = "select * from member";
         Connection conn = null;
