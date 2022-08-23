@@ -12,9 +12,16 @@
         <p>
             <a href="/members/new" th:text="#{member.text.join}">회원 가입</a>
             <a href="/members" th:text="#{member.text.list}">회원 목록</a>
-            <a href="/members/login" th:text="#{member.text.login}">로그인</a>
+            <a href="/members/login" th:if="${session.loginMember} == null" th:text="#{member.text.login}">로그인</a>
+            <a href="/members/login" th:unless="${session.loginMember} == null" th:text="#{member.text.logout}">로그아웃</a>
         </p>
     </div>
 </div> <!-- /container -->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+        const session = /*[[${session}]]*/null;
+        console.log(session);
+    /*]]*/
+</script>
 </body>
 </html>
