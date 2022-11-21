@@ -1,6 +1,6 @@
 package hello.hellospring.controller;
 
-import hello.hellospring.document.Person;
+//import hello.hellospring.document.Person;
 import hello.hellospring.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,14 @@ public class PersonRestController {
         this.personService = personService;
     }
 
-    @PostMapping
-    public void save(@RequestBody final Person person) {
-        personService.save(person);
-    }
+//    @PostMapping
+//    public void save(@RequestBody final Person person) {
+//        personService.save(person);
+//    }
 
-    @GetMapping("/{id}")
-    public Person findById(@PathVariable final String id) {
-        return personService.findById(id);
-    }
+//    @GetMapping("/{id}")
+//    public Person findById(@PathVariable final String id) {
+//        return personService.findById(id);
+//    }
 
 }
